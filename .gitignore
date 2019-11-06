@@ -459,3 +459,7 @@ npm-debug.*
 web-build/
 web-report/
 vendor
+
+# FOR THIS PROJECT ONLY
+config/default.json
+config/production.json
