@@ -1,0 +1,35 @@
+# std 'build' type dirs
+build/
+dist/
+
+# where I often store .zip files etc
+orig/
+**/*.zip
+**/*.tgz
+
+# coz...
+tmp/
+temp/
+
+# my $ history > si.hist runs
+*.hist
+
+# for mono-repos so I only need one .gitignore
+**/.idea/**/workspace.xml
+
+# VS Code related...
+.vscode
+node_modules/**/*
+
+# React Native...
+.expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/
+vendor
