@@ -14,10 +14,10 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "7.7.0",
-    "@hot-loader/react-dom": "16.10.2",
+    "@hot-loader/react-dom": "16.11.0",
     "bcryptjs": "2.4.3",
     "config": "3.2.4",
-    "core-js": "3.3.6",
+    "core-js": "3.4.0",
     "express": "4.17.1",
     "express-validator": "6.2.0",
     "gravatar": "1.8.0",
@@ -26,13 +26,13 @@
     "prop-types": "15.7.2",
     "react": "16.11.0",
     "react-dom": "16.11.0",
-    "react-hot-loader": "4.12.15",
+    "react-hot-loader": "4.12.16",
     "regenerator-runtime": "0.13.3",
     "request": "2.88.0"
   },
   "devDependencies": {
     "@babel/cli": "7.7.0",
-    "@babel/core": "7.7.0",
+    "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.7.0",
     "@babel/plugin-proposal-private-methods": "7.6.0",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
