@@ -41,7 +41,7 @@ router.post('/test', (req, res) => {
 router.post(
   '/',
   [
-    check('game')
+    check('name', 'Name is required')
       .not()
       .isEmpty(),
   ],
