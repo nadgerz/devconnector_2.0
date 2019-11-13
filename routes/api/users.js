@@ -11,14 +11,14 @@ const User = require('../../models/User');
 // @route    GET api/users
 // @desc     Test route
 // @access   Public
-router.get('/test', (req, res) => res.send('Test route for users'));
+router.get('/test', (req, res) => res.send('Test route for users [GET]'));
 
 // @route    POST api/users
 // @desc     Register user
 // @access   Public
 router.post('/test', (req, res) => {
   console.log(req.body);
-  res.send('User route');
+  res.send('Test route for users [POST]');
 });
 
 // @route    POST api/users
