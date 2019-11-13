@@ -24,8 +24,13 @@ router.post('/test', (req, res) => {
 // @route    POST api/users
 // @desc     Register user
 // @access   Public
+router.post('/', (req, res) => {
+  console.log(req.body);
+  res.send('User route [1]');
+});
+
 router.post(
-  '/',
+  '/final',
   [
     check('name', 'Name is required')
       .not()
