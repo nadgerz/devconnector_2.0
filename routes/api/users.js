@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
+const HttpStatus = require('http-status-codes');
 
 const User = require('../../models/User');
 
@@ -18,7 +19,26 @@ router.get('/test', (req, res) => res.send('Test route for users [GET]'));
 // @access   Public
 router.post('/test', (req, res) => {
   console.log(req.body);
+
+  res.status(HttpStatus.OK).send('ok');
+  /*
+   */
+
+  /*
+  res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+    error: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR),
+  });
+	*/
+
+  /*
+  res.status(HttpStatus.getStatusCode('Server Error')).send({
+    error: 'Server Error',
+  });
+	*/
+
+  /*
   res.send('Test route for users [POST]');
+	*/
 });
 
 // @route    POST api/users
@@ -44,7 +64,9 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res
+        .status(HttpStatus.BAD_REQUEST)
+        .json({ errors: errors.array() });
     }
 
     const { name, email, password } = req.body;
@@ -54,7 +76,7 @@ router.post(
 
       if (user) {
         return res
-          .status(400)
+          .status(HttpStatus.BAD_REQUEST)
           .json({ errors: [{ msg: 'User already exists' }] });
       }
 
@@ -94,7 +116,7 @@ router.post(
       );
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server error');
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Server error');
     }
   },
 );
