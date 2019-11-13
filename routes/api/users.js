@@ -61,15 +61,23 @@ router.post(
 
     const { name, email, password } = req.body;
 
-    // See if user exists
-
-    // Get users gravatar
-
-    // Encrypt password - bcrypt
-
-    // Return jsonwebtoken
-
     try {
+      // See if user exists
+      //    - findOne returns a promise, so we await
+      const user = await User.findOne({ email });
+
+      if (user) {
+        return res
+          .status(HttpStatus.BAD_REQUEST)
+          .json({ errors: [{ msg: 'User already exists' }] });
+      }
+
+      // Get users gravatar
+
+      // Encrypt password - bcrypt
+
+      // Return jsonwebtoken
+
       console.log(req.body);
       res.send(`User route [2] [${name}][${email}][${password}]`);
     } catch (err) {
