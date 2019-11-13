@@ -44,6 +44,11 @@ router.post(
     check('name', 'Name is required')
       .not()
       .isEmpty(),
+    check('email', 'Please include a valid email').isEmail(),
+    check(
+      'password',
+      'Please enter a password with 6 or more characters',
+    ).isLength({ min: 6 }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -54,9 +59,19 @@ router.post(
         .json({ errors: errors.array() });
     }
 
+    const { name, email, password } = req.body;
+
+    // See if user exists
+
+    // Get users gravatar
+
+    // Encrypt password - bcrypt
+
+    // Return jsonwebtoken
+
     try {
       console.log(req.body);
-      res.send('User route [1]');
+      res.send(`User route [2] [${name}][${email}][${password}]`);
     } catch (err) {
       console.error(err.message);
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Server error');
