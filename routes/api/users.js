@@ -20,10 +20,6 @@ router.get('/test', (req, res) => res.send('Test route for users [GET]'));
 router.post('/test', (req, res) => {
   console.log(req.body);
 
-  res.status(HttpStatus.OK).send('ok');
-  /*
-   */
-
   /*
   res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
     error: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR),
@@ -36,15 +32,13 @@ router.post('/test', (req, res) => {
   });
 	*/
 
-  /*
-  res.send('Test route for users [POST]');
-	*/
+  res.status(HttpStatus.OK).send('Test route for users [POST]');
 });
 
 // @route    POST api/users
 // @desc     Register user
 // @access   Public
-router.post('/', (req, res) => {
+router.post('/', [check('name')], (req, res) => {
   console.log(req.body);
   res.send('User route [1]');
 });
