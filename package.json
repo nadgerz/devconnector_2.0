@@ -9,6 +9,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "format:full": "prettier --write \"./**/*.{js,jsx,css,htm,json,ts,html,sass,scss}\"",
     "format": "pretty-quick --pattern \"**/*.*(js|jsx|scss|sass|css|json|ts|html)\""
   },
   "author": "Brad Traversy",

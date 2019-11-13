@@ -49,10 +49,7 @@ const Education = ({ education, deleteEducation }) => {
 
 Education.propTypes = {
   education: PropTypes.array.isRequired,
-  deleteEducation: PropTypes.func.isRequired
+  deleteEducation: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { deleteEducation }
-)(Education);
+export default connect(null, { deleteEducation })(Education);
