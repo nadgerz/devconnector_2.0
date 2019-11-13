@@ -38,10 +38,31 @@ router.post('/test', (req, res) => {
 // @route    POST api/users
 // @desc     Register user
 // @access   Public
-router.post('/', [check('name')], (req, res) => {
-  console.log(req.body);
-  res.send('User route [1]');
-});
+router.post(
+  '/',
+  [
+    check('game')
+      .not()
+      .isEmpty(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res
+        .status(HttpStatus.BAD_REQUEST)
+        .json({ errors: errors.array() });
+    }
+
+    try {
+      console.log(req.body);
+      res.send('User route [1]');
+    } catch (err) {
+      console.error(err.message);
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Server error');
+    }
+  },
+);
 
 router.post(
   '/final',
