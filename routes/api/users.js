@@ -95,12 +95,19 @@ router.post(
       await user.save();
 
       // Return jsonwebtoken
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
 
       console.log(req.body);
       res.send(`User route [2] [${name}][${email}][${password}]`);
     } catch (err) {
       console.error(err.message);
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Server error! '+ err.message);
+      res
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .send('Server error! ' + err.message);
     }
   },
 );
