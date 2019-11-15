@@ -101,6 +101,17 @@ router.post(
         },
       };
 
+      // only keep tokens for as short a time as needed
+      // and do not store in browser
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        },
+      );
       console.log(req.body);
       res.send(`User route [2] [${name}][${email}][${password}]`);
     } catch (err) {
