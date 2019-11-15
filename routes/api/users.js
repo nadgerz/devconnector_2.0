@@ -64,7 +64,7 @@ router.post(
     try {
       // See if user exists
       //    - findOne returns a promise, so we await
-      const user = await User.findOne({ email });
+      let user = await User.findOne({ email });
 
       if (user) {
         return res
@@ -100,7 +100,7 @@ router.post(
       res.send(`User route [2] [${name}][${email}][${password}]`);
     } catch (err) {
       console.error(err.message);
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Server error');
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Server error! '+ err.message);
     }
   },
 );
